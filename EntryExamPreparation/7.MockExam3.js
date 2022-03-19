@@ -1,4 +1,4 @@
-// I couldnt get the exercises text after the exam, that is why they dont have any.
+// I couldnt get the exercises text, that is why they dont have any.
 //Exercise 1
 
 let numOfBoxes = +gets();
