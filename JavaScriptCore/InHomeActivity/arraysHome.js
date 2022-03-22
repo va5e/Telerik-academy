@@ -40,6 +40,17 @@ for (const item of arr) {
   } 
 }
 
+//best solve
+
+
+let uniqueArr2=[]
+arr.forEach((item) =>{
+    if (uniqueArr2.indexOf(item) == -1) {
+        uniqueArr2.push(item);
+    }
+})
+console.log(uniqueArr2)
+
 // flat an array
 
 const arrTwo = [1, 2, [3, 4, [5, 6]]];
