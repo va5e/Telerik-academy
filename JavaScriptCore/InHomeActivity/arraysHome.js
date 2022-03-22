@@ -22,14 +22,23 @@ console.log(has10)
 let eleGreaterThanSix = arr.find(a => { return a > 6 })
 console.log(eleGreaterThanSix)
 
-//remove the duplicates
+//remove the duplicates wrong way
 
-let uniqueArr = arr.filter(function (item, index, arr) {
-    if (item != arr[index + 1]) {
-        return item;
-    }
-})
-console.log(uniqueArr)
+// let uniqueArr = arr.filter(function (item, index, arr) {
+//     if (item != arr[index + 1]) {
+//         return item;
+//     }
+// })
+// console.log(uniqueArr)
+
+// remove the duplicates right way
+
+const removedDuplicates = [];
+for (const item of arr) {
+  if(!removedDuplicates.includes(item)){
+    removedDuplicates.push(item);
+  } 
+}
 
 // flat an array
 
