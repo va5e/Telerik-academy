@@ -1,4 +1,4 @@
-//columns ascending matrix function
+//////////////////columns ascending matrix function
 
 // function columnsMatrix(n){
 //   let matrix = [];
@@ -20,7 +20,8 @@
 // }
 // columnsMatrix(25)
 
-//Snake matrix
+///////////////////Snake matrix
+
 // let row = 4;
 // let col = 4;
 // let num = 1;
@@ -50,7 +51,7 @@
 // }
 // console.table(matrix)
 
-//spiral matrix.
+////////////////////////////////spiral matrix.
 
 // let rows = 4;
 // let cols = 4;
@@ -109,7 +110,7 @@
 
 // console.table(matrix)
 
-// //Spiral matrix from n Function
+/////////////////////////////////////////Spiral matrix from n Function
 
 // function spiralMatrix(n){
 //     let matrix = [];
