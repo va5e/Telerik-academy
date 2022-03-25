@@ -55,156 +55,110 @@ The input data will always be correct and there is no need to check it explicitl
 */
 
 
-// let input = ['x@*@*@*',
-//     '2 -1 2 -1'
-// ]
-
-// let print = this.print || console.log;
-// let gets = this.gets || ((arr, index) => () => arr[index++])(input, 0);
-
-// let content = gets().split('');
-// let catSteps = gets().split(' ').map(Number);
-// catSteps.unshift(0)
-// let collectedByCat = []
-// let currentPosition = 0;
-// let souls = 0;
-// let food = 0;
-// let traps = 0;
-// let turns = 0;
-// let dead;
-
-// for (let i = 0; i < catSteps.length; i++) {
-
-//     if (catSteps[i] < 0) {
-//         currentPosition -= (Math.abs(catSteps[i]))
-
-//     } else {
-//         currentPosition += catSteps[i]
-//     }
-
-//     let asd = (content.splice(currentPosition, 1, '-'))
-//     if (asd[0] === '-') {
-//         turns++
-//         continue;
-//     } else {
-//         collectedByCat.push(asd);
-//     }
-//     if (asd[0] === '@') {
-//         souls++
-//     } else if (asd[0] === '*') {
-//         food++
-//     } else if (asd[0] === 'x') {
-//         content.splice(currentPosition, 1, 'x')
-//         if (currentPosition % 2 === 0) {
-//             collectedByCat = collectedByCat.flat()
-//             if (collectedByCat.includes('@')) {
-//                 collectedByCat.splice(collectedByCat.indexOf('@'), 1)
-//                 content.splice(currentPosition, 1, '@')
-//                 souls--;
-//                 traps++
-
-//             } else {
-//                 print('You are deadlocked, you greedy kitty!')
-//                 print(`Jumps before deadlock: ${turns}`)
-//                 dead = true;
-//                 break;
-//             }
-//         } else if (currentPosition % 2 != 0) {
-//             collectedByCat = collectedByCat.flat()
-//             if (collectedByCat.includes('*')) {
-//                 collectedByCat.splice(collectedByCat.indexOf('*'), 1)
-//                 content.splice(currentPosition, 1, '*')
-//                 food--;
-//                 traps++
-
-//             } else {
-//                 print('You are deadlocked, you greedy kitty!')
-//                 print(`Jumps before deadlock: ${turns}`)
-//                 dead = true;
-//                 break;
-//             }
-//         }
-//     }
-//     turns++
-// }
-
-
-// if (!dead) {
-//     print(`Coder souls collected: ${souls}`)
-//     print(`Food collected: ${food}`)
-//     print(`Deadlocks: ${traps}`)
-// }
-
-// console.log(catSteps)
-
-
 let input = [
-    '@*@*@*xxx', // coder souls ("@"), food ("*") and deadlocks ("x") 
-    '1 -1 1 -1 2 1 1 1 1 1 1' // Positive means, move to the right, negative means, move to the left.
+    '@@@xx@*',
+    '1 -1 -1 4'
 ];
 
 let print = this.print || console.log;
 let gets = this.gets || ((arr, index) => () => arr[index++])(input, 0);
 
-let symbols = gets().split('');
-let path = gets().split(' ').map(Number);
-path.unshift(0);
-let coderSouls = 0;
+let items = gets().split('');
+let step = gets().split(' ').map(Number);
+step.unshift(0);
+
+let curPos = 0;
+let kittyCollect = [];
 let food = 0;
-let deadlock = 0;
-let currentMove = 0;
-let currentPosition = 0;
-let inDeadlock = false;
-let jumps = 0;
+let souls = 0;
+let traps = 0;
+let steps = 0;
+let dead;
 
-for (let i = 0; i < path.length; i++) {
-    currentMove = path[i];
-    currentPosition += currentMove;
-    if (currentPosition < 0) {
-        currentPosition = symbols.length + (currentPosition % symbols.length);
-    }
 
-    if (currentPosition >= symbols.length) {
-        currentPosition = currentPosition % symbols.length;
-    }
+main:
+    for (let i = 0; i < step.length; i++) {
 
-    switch (symbols[currentPosition]) {
-        case "*":
-            food++;
-            symbols[currentPosition] = '0';
-            break;
-        case "@":
-            coderSouls++;
-            symbols[currentPosition] = '0';
-            break;
-        case "x":
-            if (currentPosition % 2 == 0) {
-                if (coderSouls === 0) {
-                    inDeadlock = true;
-                    break;
+
+        curPos += step[i];
+        if (curPos < 0) {
+            curPos = items.length + (curPos % items.length);
+        }
+
+        if (curPos >= items.length) {
+            curPos = curPos % items.length;
+        }
+
+        switch (items[curPos]) {
+            case '-':
+
+                steps++
+                continue;
+
+            case '@':
+
+                items[curPos] = '-'
+                souls++
+                kittyCollect.push('@')
+                steps++
+                break;
+
+            case '*':
+
+                items[curPos] = '-'
+                food++
+                kittyCollect.push('*')
+                steps++
+                break;
+
+            case 'x':
+
+                if (curPos % 2 === 0) {
+
+                    if (kittyCollect.includes('@')) {
+
+                        kittyCollect[kittyCollect.indexOf('@')] = '-'
+                        items[curPos] = '@'
+                        traps++
+                        steps++
+                        souls--
+
+                    } else {
+
+                        dead = true;
+                        break main;
+                    }
+
+                } else {
+
+                    if (kittyCollect.includes('*')) {
+
+                        kittyCollect[kittyCollect.indexOf('*')] = '-'
+                        items[curPos] = '*'
+                        traps++
+                        steps++
+                        food--
+
+                    } else {
+
+                        dead = true;
+                        break main;
+
+                    }
                 }
-                coderSouls--;
-                deadlock++;
-                symbols[currentPosition] = '@';
-            } else {
-                if (food === 0) {
-                    inDeadlock = true;
-                    break;
-                }
-                deadlock++;
-                food--;
-                symbols[currentPosition] = '*';
-            }
-            break;
-    }
-    if (inDeadlock === true) {
-        break;
-    }
-    jumps++
-}
 
-if (inDeadlock) {
-    print("You are deadlocked, you greedy kitty!" + '\n' + "Jumps before deadlock: " + jumps);
+                break;
+        }
+    }
+
+if (dead) {
+
+    print(`You are deadlocked, you greedy kitty!`)
+    print(`Jumps before deadlock: ${steps}`)
+
 } else {
-    print("Coder souls collected: " + coderSouls + `\n` + 'Food collected: ' + food + `\n` + "Deadlocks: " + deadlock);
+
+    print(`Coder souls collected: ${souls}`)
+    print(`Food collected: ${food}`)
+    print(`Deadlocks: ${traps}`)
 }
