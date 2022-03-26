@@ -112,50 +112,83 @@
 
 /////////////////////////////////////////Spiral matrix from n Function
 
-function spiralMatrix(n) {
+// function spiralMatrix(n) {
+//     let matrix = [];
+
+//     for (let i = 0; i < n; i++) {
+//         matrix[i] = [];
+//     }
+
+//     let firstRow = 0;
+//     let lastRow = n - 1;
+//     let firstCol = 0;
+//     let lastCol = n - 1;
+//     let index = 1;
+
+//     while (firstRow <= lastRow && firstCol <= lastCol) {
+
+//         for (let i = firstCol; i <= lastCol; i++) {
+//             matrix[i][firstRow] = index;
+//             index++
+//         }
+
+//         firstCol++;
+
+//         for (let i = firstCol; i <= lastCol; i++) {
+//             matrix[lastRow][i] = index;
+//             index++
+//         }
+
+//         lastRow--;
+
+//         for (let i = lastRow; i >= firstRow; i--) {
+//             matrix[i][lastCol] = index;
+//             index++;
+//         }
+
+//         lastCol--;
+
+//         for (let i = lastCol; i >= firstCol; i--) {
+//             matrix[firstRow][i] = index;
+//             index++
+//         }
+
+//         firstRow++;
+//     }
+//     console.table(matrix)
+// }
+
+// spiralMatrix(5)
+
+
+// diagonal matrix
+
+let createDiagMatrix = function (n) {
+
     let matrix = [];
 
     for (let i = 0; i < n; i++) {
-        matrix[i] = [];
+        matrix[i] = []
+
+        for (let j = 0; j < n; j++) {
+            matrix[i][j] = '*'
+        }
     }
 
-    let firstRow = 0;
-    let lastRow = n - 1;
-    let firstCol = 0;
-    let lastCol = n - 1;
     let index = 1;
 
-    while (firstRow <= lastRow && firstCol <= lastCol) {
-
-        for (let i = firstCol; i <= lastCol; i++) {
-            matrix[i][firstRow] = index;
-            index++
+    for (let row = n - 1; row >= 0; row--) {
+        for (let col = 0; col < n - row; col++) {
+            matrix[row + col][col] = index++;
         }
+    }
 
-        firstCol++;
-
-        for (let i = firstCol; i <= lastCol; i++) {
-            matrix[lastRow][i] = index;
-            index++
+    for (let col = 1; col < n; col++) {
+        for (let row = 0; row < n - col; row++) {
+            matrix[row][col + row] = index++;
         }
-
-        lastRow--;
-
-        for (let i = lastRow; i >= firstRow; i--) {
-            matrix[i][lastCol] = index;
-            index++;
-        }
-
-        lastCol--;
-
-        for (let i = lastCol; i >= firstCol; i--) {
-            matrix[firstRow][i] = index;
-            index++
-        }
-
-        firstRow++;
     }
     console.table(matrix)
 }
 
-spiralMatrix(5)
+createDiagMatrix(10)
