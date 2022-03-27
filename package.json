@@ -1,0 +1,27 @@
+{
+  "name": "telerik-academy",
+  "version": "1.0.0",
+  "description": "```\r Here are all the exercises, exams and tasks I have done in Telerik academy.\r There are multiple exercises per script, and each script has text file with exercises instructions or the instructions are directly commented in the script.\r ```",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/va5e/Telerik-academy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/va5e/Telerik-academy/issues"
+  },
+  "homepage": "https://github.com/va5e/Telerik-academy#readme",
+  "dependencies": {
+    "@types/is-number": "^7.0.3",
+    "@types/lodash": "^4.14.180",
+    "is-number": "^7.0.0",
+    "lodash": "^4.17.21"
+  }
+}
