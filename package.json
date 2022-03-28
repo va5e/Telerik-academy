@@ -1,9 +1,9 @@
 {
   "name": "telerik-academy",
   "version": "1.0.0",
-  "description": "```\r Here are all the exercises, exams and tasks I have done in Telerik academy.\r There are multiple exercises per script, and each script has text file with exercises instructions or the instructions are directly commented in the script.\r ```",
+  "description": "",
   "main": "index.js",
-  "type": "module",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

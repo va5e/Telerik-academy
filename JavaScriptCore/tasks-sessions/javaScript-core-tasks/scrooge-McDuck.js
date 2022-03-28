@@ -35,16 +35,7 @@ let input = [
     '3 15 4',
     '10 20 9',
     '12 0 100',
-    '2 22 8',
-
-    // '3 3',
-    // '10 10 0',
-    // '10 10 10',
-    // '10 10 10'
-
-    // '2 3',
-    // '0 5 2',
-    // '2 5 3',
+    '2 22 8'
 ];
 
 let print = this.print || console.log;
@@ -69,32 +60,65 @@ for (let i = 0; i < rows; i++) {
     }
 }
 
-console.log(curRow, curCol)
+console.log(curCol,curRow);
 
-let curPos = matrix[curRow][curCol];
+let money = 0;
 let leftPos = matrix[curRow][curCol - 1];
 let rightPos = matrix[curRow][curCol + 1];
 let upPos = matrix[curRow - 1][curCol];
 let downPos = matrix[curRow + 1][curCol];
 
+while(true){
 
-
-
-while (true) {
-
-    if (rightPos && rightPos > leftPos && rightPos > upPos && rightPos > downPos) {
-        ++curCol
-        matrix[curRow][curCol + 1] = matrix[curRow][curCol + 1] - 1
-    } else if (leftPos && leftPos > rightPos && leftPos > upPos && leftPos > downPos) {
-        --curCol
-        matrix[curRow][curCol - 1] = matrix[curRow][curCol - 1] - 1
-    } else if (upPos && upPos > rightPos && upPos > leftPos && upPos > downPos) {
-        --curRow
-        matrix[curRow - 1][curCol] = matrix[curRow - 1][curCol] - 1
-    } else if (downPos && downPos > rightPos && downPos > upPos && downPos > leftPos) {
-        ++curRow
-        matrix[curRow + 1][curCol] = matrix[curRow + 1][curCol] - 1
-    }
-
-
+    if(curCol -1 < 0){
+    leftPos = 0;
+}else if(curCol +1  > cols){
+    rightPos = 0;
+}else if(curRow -1 < 0){
+    upPos = 0;
+}else if(curRow +1 > rows){
+    downPos = 0;
 }
+
+
+
+if (leftPos >= Math.max(rightPos, upPos, downPos)) {
+    if (leftPos == 0) {
+      break;
+    }
+    else {
+      curCol--;
+      matrix[curRow][curCol]--
+      money++
+    }
+  } else if(rightPos >= Math.max(leftPos, upPos, downPos)) {
+    if (rightPos == 0) {
+      break;
+    }
+    else {
+      curCol++;
+      matrix[curRow][curCol]--
+      money++
+    }
+  } else if(upPos >= Math.max(rightPos, leftPos, downPos)) {
+    if (upPos == 0) {
+      break;
+    }
+    else {
+      curRow--;
+      matrix[curRow][curCol]--
+      money++
+    }
+  } else if(downPos >= Math.max(rightPos, upPos, leftPos)) {
+    if (downPos == 0) {
+      break;
+    }
+    else {
+      curRow++;
+      matrix[curRow][curCol]--
+      money++
+    }
+  } 
+}
+
+console.log(money)
