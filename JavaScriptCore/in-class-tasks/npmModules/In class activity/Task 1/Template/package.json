@@ -1,0 +1,15 @@
+{
+  "name": "in-class-activity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test/array-op.tests.js",
+    "start": "node main.js"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

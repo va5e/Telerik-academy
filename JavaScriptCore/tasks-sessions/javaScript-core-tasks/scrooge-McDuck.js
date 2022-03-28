@@ -31,11 +31,10 @@ Each cell can contain up to 1024 coins
 */
 
 let input = [
-    '4 3',
-    '3 15 4',
-    '10 20 9',
-    '12 0 100',
-    '2 22 8'
+  '3 3',
+  '10 10 0',
+  '10 10 10',
+  '10 10 10'
 ];
 
 let print = this.print || console.log;
@@ -60,65 +59,63 @@ for (let i = 0; i < rows; i++) {
     }
 }
 
-console.log(curCol,curRow);
-
-let money = 0;
-let leftPos = matrix[curRow][curCol - 1];
-let rightPos = matrix[curRow][curCol + 1];
-let upPos = matrix[curRow - 1][curCol];
-let downPos = matrix[curRow + 1][curCol];
+let leftPos; 
+let rightPos;
+let upPos; 
+let downPos; 
+let coins = 0;
 
 while(true){
-
-    if(curCol -1 < 0){
+  
+  if(curCol-1 < 0){
     leftPos = 0;
-}else if(curCol +1  > cols){
+  }else{
+    leftPos = matrix[curRow][curCol - 1]
+  }
+  if(curCol+1 === cols){
     rightPos = 0;
-}else if(curRow -1 < 0){
-    upPos = 0;
-}else if(curRow +1 > rows){
+  }else{
+    rightPos = matrix[curRow][curCol + 1]
+  }
+   if(curRow + 1 === rows){
     downPos = 0;
+  }else{
+    downPos = matrix[curRow + 1][curCol]
+  }
+   if(curRow -1 < 0){
+    upPos = 0;
+  }else{
+    upPos = matrix[curRow - 1][curCol]
+  }
+
+  if(leftPos >= Math.max(rightPos,downPos,upPos)){
+    if(leftPos===0){
+      break;
+    }
+    matrix[curRow][curCol-1]--
+    curCol--
+    coins++
+  } else if(rightPos >= Math.max(leftPos,downPos,upPos)){
+    if(rightPos===0){
+      break;
+    }
+    matrix[curRow][curCol+1]--
+    curCol++
+    coins++
+  }else if(upPos >= Math.max(rightPos,leftPos,downPos)){
+    if(upPos===0){
+      break;
+    }
+    matrix[curRow-1][curCol]--
+    curRow--
+    coins++
+  }else if(downPos >= Math.max(rightPos,upPos,leftPos)){
+    if(downPos===0){
+      break;
+    }
+    matrix[curRow+1][curCol]--
+    curRow++
+    coins++
+  }
 }
-
-
-
-if (leftPos >= Math.max(rightPos, upPos, downPos)) {
-    if (leftPos == 0) {
-      break;
-    }
-    else {
-      curCol--;
-      matrix[curRow][curCol]--
-      money++
-    }
-  } else if(rightPos >= Math.max(leftPos, upPos, downPos)) {
-    if (rightPos == 0) {
-      break;
-    }
-    else {
-      curCol++;
-      matrix[curRow][curCol]--
-      money++
-    }
-  } else if(upPos >= Math.max(rightPos, leftPos, downPos)) {
-    if (upPos == 0) {
-      break;
-    }
-    else {
-      curRow--;
-      matrix[curRow][curCol]--
-      money++
-    }
-  } else if(downPos >= Math.max(rightPos, upPos, leftPos)) {
-    if (downPos == 0) {
-      break;
-    }
-    else {
-      curRow++;
-      matrix[curRow][curCol]--
-      money++
-    }
-  } 
-}
-
-console.log(money)
+console.log(coins)
