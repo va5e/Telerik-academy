@@ -1,11 +1,13 @@
-// const course = {
-//     name:'Music',
-//     teacher:'Mr.Stoyan',
-//     studentsCount:25,
-//     weekDay:'Friday',
-// }
+import _ from 'lodash';
+// // const course = {
+// //     name:'Music',
+// //     teacher:'Mr.Stoyan',
+// //     studentsCount:25,
+// //     weekDay:'Friday',
+// // }
 
-// console.log(`${course.name} by ${course.teacher}. Every ${course.weekDay}, expected attendance: ${course.studentsCount}`)
+// // console.log(`${course.name} by ${course.teacher}. Every ${course.weekDay}, expected attendance: ${course.studentsCount}`);
+// // console.log(`${JSON.stringify(course)}`);
 // /**
 //  * 
 //  * @param {} courseName string
@@ -23,9 +25,8 @@
 
 // }
 
-// const getCourseLabel = (obj)=>{
-//     const label = `${obj.name} by ${obj.teacher}. Every ${obj.weekDay}, expected attendance: ${obj.studentsCount}`;
-// return label;
+// const getCourseLabel = ({name,teacher,weekDay,studentsCount})=>{
+//     return `${name} by ${teacher}. Every ${weekDay}, expected attendance: ${studentsCount}`;
 // }
 
 // const math = createCourse('Math', 'Ms. Atanasova', 31, 'Monday');
@@ -46,7 +47,7 @@
     // console.log(pointTwo.x);
 
     // What's the result? 
-    // a) undefined <--------
+    // a) undefined <-----
     // b) 10
     // c) TypeError
     
@@ -57,7 +58,7 @@
     // console.log(letters);
 
     // // What's the result?
-    // // a) [ 'a', 'b', 'c', 'd', 'e' ] <-----------------
+    // // a) [ 'a', 'b', 'c', 'd', 'e' ] <-----
     // // b) Error: you can't sort letters
     // // c) [ 'a', 'e', 'c', 'b', 'd' ]
     
@@ -72,10 +73,9 @@
 
     // // What's the result?
     // // a) Pesho
-    // // b) Gosho <----------
+    // // b) Gosho <-----
     // // c) undefined
  
-
 
     // const person = { name: 'Pesho' };
     // const modify = (p) => {
@@ -85,10 +85,9 @@
     // console.log(person.name);
 
     // // What's the result?
-    // // a) Pesho <------------- ?????
-    // // b) Gosho
+    // // a) Pesho <-----
     // // c) undefined
-   
+    //    b) Gosho
 
 
     
@@ -101,7 +100,7 @@
     // // What's the result?
     // // a) Gosho 30 Gosho 30
     // // b) Pesho 30 Gosho 30
-    // // c) Pesho undefined Gosho 30 <--------------------
+    // // c) Pesho undefined Gosho 30 <-----
     // // d) Pesho undefined Pesho undefined
   
 
@@ -115,7 +114,7 @@
     // console.log(user1 === user3);
 
     // // What's the result?
-    // // a) false, false, true <----------------
+    // // a) false, false, true <-----
     // // b) false, true, true
     // // c) true, true, false
     // // d) true, false, true
@@ -131,24 +130,45 @@
     // console.log(user1 === user3);
     // console.log(user2 === user3);
 
+
     // // What's the result?
     // // a) { name: 'Pesho', name: 'Gosho' }, false, false, false
     // // b) { name: 'Gosho' }, false, true, true
-    // // c) { name: 'Gosho' }, false, false, false <------------????
+    // // c) { name: 'Gosho' }, false, false, false <-----
     // // d) { name: 'Pesho' }, false, true, true
     // // e) { name: 'Gosho' }, true, true, true
     // // f) { name: 'Gosho' }, false, true, true
   
-    let obj1 = {};
-    const obj2 = {};
+    // let obj1 = {};
+    // const obj2 = {};
 
-    obj1.key = 'value';
-    obj2.key = 'value';
+    // obj1.key = 'value';
+    // obj2.key = 'value';
 
-    console.log(obj1.key);
-    console.log(obj2.key);
+    // console.log(obj1.key);
+    // console.log(obj2.key);
 
     // // What's the result?
     // // a) value, undefined
     // // b) Error - can't modify a constant
-    // // c) value, value <-----------------
+    // // c) value, value <-----
+
+    // console.log(`shallow copy`)
+
+    // const arr = [1,2,3,[4,5,6]];
+    // const newArr = [...arr]; // const newArr = arr.slice();
+    // console.log(newArr)
+    
+    // newArr[3][0]=10;
+    // console.log(arr[3]);
+
+    // console.log(`deep copy`)
+
+    // const newArr2 = _.cloneDeep(arr);
+    // console.log(newArr2);
+   
+    // newArr2[3][0]=15;
+    // console.log(`${arr[3]} original array`);
+    // console.log(`${newArr2[3]} deep copied array`)
+
+    
