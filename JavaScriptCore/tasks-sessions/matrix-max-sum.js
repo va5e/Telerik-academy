@@ -31,3 +31,45 @@ The R and C coordinates will always be valid and inside the matrix.
 The R C pairs will be at least 1 and no more than 20.
 Matrix elements will have values in range -5000 and 5000.
 */
+
+const rows = Number(gets());
+const matrix = [];
+
+for (let i = 0; i < rows; i++) {
+  matrix[i] = gets().split(' ').map(Number);
+}
+
+const cols = matrix[0].length;
+
+const coords = gets().split(' ').map(Number);
+let maxSum = Number.MIN_SAFE_INTEGER;
+
+while (coords.length > 0) {
+  const r = coords.shift();
+  const c = coords.shift();
+
+  let tempSum = 0;
+
+  if (r > 0) {
+    for (let i = 0; i < Math.abs(c); i++) {
+      tempSum += matrix[r - 1][i];
+    }
+  }
+  if (r < 0) {
+    for (let i = cols - 1; i >= Math.abs(c) - 1; i--) {
+      tempSum += matrix[-r - 1][i];
+    }
+  }
+  if (c > 0) {
+    for (let i = Math.abs(r) - 2; i >= 0; i--) {
+      tempSum += matrix[i][c - 1];
+    }
+  }
+  if (c < 0) {
+    for (let i = Math.abs(r); i < rows; i++) {
+      tempSum += matrix[i][-c - 1];
+    }
+  }
+  maxSum = Math.max(maxSum, tempSum);
+}
+print(maxSum);

@@ -119,3 +119,49 @@ while(true){
   }
 }
 console.log(coins)
+
+
+
+
+
+
+////////
+
+const n = 4;
+const m = 3;
+ 
+const matrix = [
+    [3, 2, 4],
+    [2, 0, 3],
+    [1, 1, 5],
+    [2, 2, 5],
+];
+ 
+let startPos = [1, 1];
+let coinSum = 0;
+ 
+while (true) {
+    const [x, y] = startPos;
+    const neighbors = [[0, -1], [0, 1], [-1, 0], [1, 0]].map(
+        ([dx, dy]) => [x + dx, y + dy]
+    ).filter(([nx, ny]) => nx >= 0 && nx < n && ny >= 0 && ny < m);
+ 
+    let maxNeighbor = neighbors[0];
+    neighbors.shift();
+    for (const [x2, y2] of neighbors) {
+        const [x1, y1] = maxNeighbor;
+        if (matrix[x2][y2] > matrix[x1][y1]) {
+            maxNeighbor = [x2, y2];
+        }
+    }
+ 
+    const [x1, y1] = maxNeighbor;
+    if (matrix[x1][y1] === 0) {
+        console.log(coinSum);
+        break;
+    }
+ 
+    coinSum++;
+    matrix[x1][y1]--;
+    startPos = [x1, y1];
+}
