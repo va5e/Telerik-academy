@@ -34,45 +34,45 @@
      ```
 
 
-1. Initialize a Git repository to begin tracking new project – “homework-project”
+1. Initialize a Git repository to begin tracking new project – “homework-project” // open directory with gitbash command: git init nameOfProject
    
-2. Create 3 new files using the touch command (name them file1.txt, file2.html, and file3.js)
+2. Create 3 new files using the touch command (name them file1.txt, file2.html, and file3.js) // tuka si gi napravih s dqsno kopche i nova papka vuv vs-a
    
-3. Create 1 new folder named random_files
+3. Create 1 new folder named random_files /pak cykash s dqsno i pravish papka, ne znam komandata za pravene na papki ot terminala
    
-4. Move the text file (.txt) and the js file (.js) into the random_files directory
+4. Move the text file (.txt) and the js file (.js) into the random_files directory // mestish tiq dva faila v random-a
    
-5. Check the status of your repository (you will only see the random_files directory listed, not the files inside it)
+5. Check the status of your repository (you will only see the random_files directory listed, not the files inside it)// komanda : git status
    
-6.  Add all newly created/untracked files and folders to the staging area
+6.  Add all newly created/untracked files and folders to the staging area // komanda git add . 
    
-7.  Check the status of your repository
+7.  Check the status of your repository // komanda gits status
    
-8.  Remove file3.js from the staging area
+8.  Remove file3.js from the staging area // otstrani na poleto s failovete na samiq fail mu davash minsuche i go izkarva ot stage-a ima nachiin i ot konzolata no ne go znam, samo che trqbva da cuknesh ne na failovete a na sourse controla. Tam stoqt failovete sa commitvane 
 9. 
 10. Create 3 new files in the random_files directory (name them file4.css, file5.css, and file6.js)
     
-11. Check the status of your repository
+11. Check the status of your repository // komanda : git status
     
-12. Add all files with the file type of .css to the staging area (hint: you need to be inside of the random_files directory)
+12. Add all files with the file type of .css to the staging area (hint: you need to be inside of the random_files directory) // komanda: git add \*.css
     
-13. Check the status of your repository
+13. Check the status of your repository // git status 
     
-14. Add all files with the file type of .js to the staging area
+14. Add all files with the file type of .js to the staging area // git add \*.js
     
-15. Check the status of your repository
+15. Check the status of your repository // git status
     
 16. Create a new directory named secret_stuff (hint: make sure you cd back into homework-project first)
     
 17. Create two files inside of secret_stuff named file1.yml and file2.js
     
-18. Create a .gitignore file so we can ignore the secret_stuff directory and all of its contents (hint: .gitignore should be inside of homework-project)
+18. Create a .gitignore file so we can ignore the secret_stuff directory and all of its contents (hint: .gitignore should be inside of homework-project) // pravish fail koito da se kazva .gitignore 
     
-19. Add the secret_stuff folder to the .gitignore file
+19. Add the secret_stuff folder to the .gitignore file // v git ignore pishesh /secret_stuff
     
-20. Check the status of your repository
+20. Check the status of your repository //git status
     
-21. Add the .gitignore file to the staging area
+21. Add the .gitignore file to the staging area // git add ./.gitignore
     
 22. If your staging area looks like the image below then you have completed this exercise successfully. You may now commit your changes
 
