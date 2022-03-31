@@ -1,13 +1,11 @@
 // Clone Objects
 
 export default function (data) {
-  // your code starts here
-
   const result = {};
   
   for(const key in data){
-
-      if(Array.isArray(data[key])){
+      
+    if(Array.isArray(data[key])){
         result[key]= (data[key]).slice()
       }else if(data[key]===null){
         result[key] = data[key]
@@ -17,6 +15,6 @@ export default function (data) {
       result[key] = data[key]
       }
   }
-return result;
-  // your code ends here
-}
+
+  return result;
+ }

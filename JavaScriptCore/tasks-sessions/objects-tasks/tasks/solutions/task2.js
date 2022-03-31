@@ -14,6 +14,7 @@ data['keys'].forEach((key) => {
 for (const key in result) {
     const keyInFirst = key in data['first'];
     const keyInSecond = key in data['second'];
+    
     if (keyInFirst && keyInSecond) {
         let keyArr = [];
         keyArr.push(data['first'][key]);
@@ -25,7 +26,6 @@ for (const key in result) {
         result[key] = data['second'][key];
     }
 }
-
 return result;
 }
  
