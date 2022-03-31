@@ -5,84 +5,84 @@
 //     egn: 9702235367,
 // }
 
-// const getKeys = (obj) => {
-//     const result = Object.keys(obj);
+const getKeys = (obj) => {
+    const result = Object.keys(obj);
     
-//     return result;
-// }
+    return result;
+}
 
-// const dltKey = (obj,key)=>{
-//     const keys = getKeys(obj);
-//     const newObj = {};
-//     for(const item of keys){
-//         newObj[item]=obj[item];
-//     }
-//     delete newObj[key];
-// return newObj;
-// }
+const dltKey = (obj,key)=>{
+    const keys = getKeys(obj);
+    const newObj = {};
+    for(const item of keys){
+        newObj[item]=obj[item];
+    }
+    delete newObj[key];
+return newObj;
+}
 
 // // console.log(dltKey(person,'age'));
 // // console.log(person)
 
 
-// const dltKeys = (obj,...keys)=>{
-//     const keysCol = getKeys(obj);
-//     const newObj = {};
-//     for(const item of keysCol){
-//         newObj[item]=obj[item];
-//     }
-//     for(const item of keys){
-//         console.log(item)
-//         delete newObj[item]
-//     }
-// return newObj;
-// }
+const dltKeys = (obj,...keys)=>{
+    const keysCol = getKeys(obj);
+    const newObj = {};
+    for(const item of keysCol){
+        newObj[item]=obj[item];
+    }
+    for(const item of keys){
+        console.log(item)
+        delete newObj[item]
+    }
+return newObj;
+}
 // console.log(person);
 // console.log(dltKeys(person,'firstName'))
 
-// const getTypeStats = obj => {
-//    const newObj = {
-//        strings:0,
-//        numbers:0,
-//        booleans:0,
-//        objects:0,
-//        functions:0,
-//        arrays:0,
-//        symbols:0,
-//        undefineds:0,
-//        nulls:0
-//    };
+const getTypeStats = obj => {
+   const newObj = {
+       strings:0,
+       numbers:0,
+       booleans:0,
+       objects:0,
+       functions:0,
+       arrays:0,
+       symbols:0,
+       undefineds:0,
+       nulls:0
+   };
 
-//      for (const key in obj) {
-//         if (Array.isArray(obj[key])) {
-//             newObj['arrays']++
-//         }else if(typeof obj[key] === 'number' ){
-//             newObj['numbers']++
-//         }else if(typeof obj[key] === 'string'){
-//             newObj['strings']++
-//         }else if(obj[key] === 'null'){
-//             newObj['nulls']++
-//         }else if(typeof obj[key] === 'symbol'){
-//             newObj['symbols']++
-//         }else if(typeof obj[key] === 'undefined'){
-//             newObj['undefineds']++
-//         }else if(typeof obj[key] === 'object'){
-//             newObj['objects']++
-//         }else if(typeof obj[key] === 'function'){
-//             newObj['functions']++
-//         }else if(typeof obj[key] === 'boolean'){
-//             newObj['booleans']++
-//         }
-//     }
-//    let result = {}
-//    for (const key in newObj){
-//        if(newObj[key]){
-//             result[key] = newObj[key]
-//        }
-//    }
-// return result;
+     for (const key in obj) {
+        if (Array.isArray(obj[key])) {
+            newObj['arrays']++
+        }else if(typeof obj[key] === 'number' ){
+            newObj['numbers']++
+        }else if(typeof obj[key] === 'string'){
+            newObj['strings']++
+        }else if(obj[key] === null){
+            newObj['nulls']++
+        }else if(typeof obj[key] === 'symbol'){
+            newObj['symbols']++
+        }else if(typeof obj[key] === 'undefined'){
+            newObj['undefineds']++
+        }else if(typeof obj[key] === 'object'){
+            newObj['objects']++
+        }else if(typeof obj[key] === 'function'){
+            newObj['functions']++
+        }else if(typeof obj[key] === 'boolean'){
+            newObj['booleans']++
+        }
+    }
+   let result = {}
+   for (const key in newObj){
+       if(newObj[key]){
+            result[key] = newObj[key]
+       }
+   }
+return result;
 
-// }
+}
 
 // console.log(getTypeStats({age:true, func: nameS = (a)=>a*a, arr:[1,2,3,4]}));
 
