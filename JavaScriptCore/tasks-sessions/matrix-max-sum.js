@@ -32,44 +32,74 @@ The R C pairs will be at least 1 and no more than 20.
 Matrix elements will have values in range -5000 and 5000.
 */
 
-const rows = Number(gets());
-const matrix = [];
+let matrix = [];
+let index = 1;
+let sum = 0;
+let sumArr = []
+const coordinates = [1, 2, -2, 3, 4, -1]
 
-for (let i = 0; i < rows; i++) {
-  matrix[i] = gets().split(' ').map(Number);
+for (let i = 0; i < 5; i++) {
+    matrix[i] = []
+    for (let j = 0; j < 5; j++) {
+        matrix[i][j] = index++
+    }
 }
 
-const cols = matrix[0].length;
+while (coordinates.length != 0) {
 
-const coords = gets().split(' ').map(Number);
-let maxSum = Number.MIN_SAFE_INTEGER;
+    let rowCord = coordinates[0];
+    let colCord = coordinates[1];
+    let row = Math.abs(rowCord) - 1;
+    let col = Math.abs(colCord) - 1;
 
-while (coords.length > 0) {
-  const r = coords.shift();
-  const c = coords.shift();
+    if (rowCord < 0 && colCord > 0) {
+        for (let i = matrix[row].length - 1; i >= col; i--) {
+            sum += matrix[row][i]
+        }
+        for (let i = row - 1; i >= 0; i--) {
+            sum += matrix[i][col]
+        }
+        sumArr.push(sum);
+        sum = 0;
+    }
 
-  let tempSum = 0;
+    if (rowCord < 0 && colCord < 0) {
+        for (let i = matrix[row].length - 1; i >= col; i--) {
+            sum += matrix[row][i]
+        }
+        for (let i = row + 1; i <= matrix[0].length - 1; i++) {
+            sum += matrix[i][col]
+        }
+        sumArr.push(sum);
+        sum = 0;
+    }
 
-  if (r > 0) {
-    for (let i = 0; i < Math.abs(c); i++) {
-      tempSum += matrix[r - 1][i];
+    if (rowCord > 0 && colCord > 0) {
+        for (let i = col; i >= 0; i--) {
+            sum += matrix[row][i]
+        }
+        for (let i = row - 1; i >= 0; i--) {
+            sum += matrix[i][col]
+        }
+        sumArr.push(sum);
+        sum = 0;
     }
-  }
-  if (r < 0) {
-    for (let i = cols - 1; i >= Math.abs(c) - 1; i--) {
-      tempSum += matrix[-r - 1][i];
+
+    if (rowCord > 0 && colCord < 0) {
+        for (let i = col; i >= 0; i--) {
+            sum += matrix[row][i]
+        }
+
+        for (let i = row + 1; i <= matrix[0].length - 1; i++) {
+            sum += matrix[i][col]
+        }
+        sumArr.push(sum);
+        sum = 0;
     }
-  }
-  if (c > 0) {
-    for (let i = Math.abs(r) - 2; i >= 0; i--) {
-      tempSum += matrix[i][c - 1];
-    }
-  }
-  if (c < 0) {
-    for (let i = Math.abs(r); i < rows; i++) {
-      tempSum += matrix[i][-c - 1];
-    }
-  }
-  maxSum = Math.max(maxSum, tempSum);
+    coordinates.shift()
+    coordinates.shift()
 }
-print(maxSum);
+console.log(Math.max(...sumArr))
+
+
+//This could be made with biggestSum variable , so there will be no extra array for storing all sum values and the program will be faster.
